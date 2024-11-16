@@ -1,6 +1,7 @@
 package org.acme.services;
 
 import jakarta.enterprise.context.ApplicationScoped;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -10,7 +11,11 @@ public class AnagramsService {
 
     static Map<String, HashSet<String>> anagramsMatches = new HashMap<>();
 
-    public static void checkIfAnagramAndValorizeAnagramsMap(String leftString, String rightString){
+    public void emptyMap (){
+        anagramsMatches.clear();
+    }
+
+    public void checkIfAnagramAndValorizeAnagramsMap(String leftString, String rightString){
         if(areAnagramsCheck(leftString, rightString)){
             anagramsMatches.computeIfAbsent(leftString, k -> new HashSet<>()).add(rightString);
             anagramsMatches.computeIfAbsent(rightString, k -> new HashSet<>()).add(leftString);
@@ -29,14 +34,14 @@ public class AnagramsService {
         }
     }
 
-    public static HashSet<String> retrievePastAnagramsWithGivenWord(String givenWord){
+    public HashSet<String> retrievePastAnagramsWithGivenWord(String givenWord){
         return anagramsMatches.get(givenWord);
     }
 
-    public static boolean areAnagramsCheck(String leftString, String rightString){
+    public boolean areAnagramsCheck(String leftString, String rightString){
 
         // Null checks
-        if (leftString == null || rightString == null) {
+        if (StringUtils.isEmpty(leftString) || StringUtils.isEmpty(rightString)) {
             return false;
         }
 

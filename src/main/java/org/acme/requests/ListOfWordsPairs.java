@@ -9,19 +9,18 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-/*@Builder
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Data*/
+@Data
 public class ListOfWordsPairs implements Serializable {
 
     private List<WordsPairs> listOfWordsPairs = new ArrayList<>();
 
-    public List<WordsPairs> getListOfWordsPairs() {
-        return listOfWordsPairs;
-    }
-
-    public void setListOfWordsPairs(List<WordsPairs> listOfWordsPairs) {
-        this.listOfWordsPairs = listOfWordsPairs;
+    @Override
+    public String toString() {
+        return "ListOfWordsPairs{" +
+                "listOfWordsPairs=" + listOfWordsPairs +
+                '}';
     }
 }
