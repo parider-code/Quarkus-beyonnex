@@ -34,7 +34,7 @@ public class AnagramsController {
                 anagramsService.checkIfAnagramAndValorizeAnagramsMap(eachPair.getLeftString(), eachPair.getRightString());
             }
             Map<String, HashSet<String>> anagramsMatches = anagramsService.getAnagramsMatches();
-            return RestResponse.ok("Processed successfully");
+            return RestResponse.ok("Processed successfully!");
         } catch (Exception exception){
             return RestResponse.status(RestResponse.Status.INTERNAL_SERVER_ERROR, "Internal Server Error");
         }
